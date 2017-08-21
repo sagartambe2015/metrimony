@@ -13,7 +13,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
-import metrimony.DeviosbuddyApplication;
+import metrimony.MetrimonyApplication;
 import metrimony.backend.peristence.domain.backend.Plan;
 import metrimony.backend.peristence.domain.backend.Role;
 import metrimony.backend.peristence.domain.backend.User;
@@ -26,7 +26,7 @@ import metrimony.enums.RolesEnum;
 import metrimony.utils.UserUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = DeviosbuddyApplication.class)
+@SpringApplicationConfiguration(classes = MetrimonyApplication.class)
 public class AbstractIntegrationTest {
 	@Autowired
     protected PlanRepository planRepository;

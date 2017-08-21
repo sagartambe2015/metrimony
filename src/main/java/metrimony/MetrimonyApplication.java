@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-public class DeviosbuddyApplication {
+public class MetrimonyApplication {
 
 	public static void main(String[] args) {
 		
-		SpringApplication.run(DeviosbuddyApplication.class, args);
+		SpringApplication.run(MetrimonyApplication.class, args);
 	}
 }
