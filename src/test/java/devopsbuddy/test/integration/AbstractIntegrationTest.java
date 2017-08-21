@@ -13,17 +13,17 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
-import devopsbuddy.DeviosbuddyApplication;
-import devopsbuddy.backend.peristence.domain.backend.Plan;
-import devopsbuddy.backend.peristence.domain.backend.Role;
-import devopsbuddy.backend.peristence.domain.backend.User;
-import devopsbuddy.backend.peristence.domain.backend.UserRole;
-import devopsbuddy.backend.peristence.repositories.PlanRepository;
-import devopsbuddy.backend.peristence.repositories.RoleRepository;
-import devopsbuddy.backend.peristence.repositories.UserRepository;
-import devopsbuddy.enums.PlansEnum;
-import devopsbuddy.enums.RolesEnum;
-import devopsbuddy.utils.UserUtils;
+import metrimony.DeviosbuddyApplication;
+import metrimony.backend.peristence.domain.backend.Plan;
+import metrimony.backend.peristence.domain.backend.Role;
+import metrimony.backend.peristence.domain.backend.User;
+import metrimony.backend.peristence.domain.backend.UserRole;
+import metrimony.backend.peristence.repositories.PlanRepository;
+import metrimony.backend.peristence.repositories.RoleRepository;
+import metrimony.backend.peristence.repositories.UserRepository;
+import metrimony.enums.PlansEnum;
+import metrimony.enums.RolesEnum;
+import metrimony.utils.UserUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = DeviosbuddyApplication.class)
