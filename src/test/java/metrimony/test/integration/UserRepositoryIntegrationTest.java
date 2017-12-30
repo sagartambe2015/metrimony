@@ -1,4 +1,4 @@
-package devopsbuddy.test.integration;
+package metrimony.test.integration;
 
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;

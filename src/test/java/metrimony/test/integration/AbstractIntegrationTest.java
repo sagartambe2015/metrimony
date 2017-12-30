@@ -1,4 +1,4 @@
-package devopsbuddy.test.integration;
+package metrimony.test.integration;
 
 import java.util.HashSet;
 import java.util.List;
@@ -88,7 +88,7 @@ public class AbstractIntegrationTest {
    }
     
     /*protected User createUser(TestName testName) {
-        return createUser(testName.getMethodName(), testName.getMethodName() + "@devopsbuddy.com");
+        return createUser(testName.getMethodName(), testName.getMethodName() + "@metrimony.com");
     }*/
     
 }
