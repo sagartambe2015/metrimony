@@ -11,12 +11,13 @@ public class UserProfile {
 	private Date dateOfBirth;
 	private String religion;
 	private String montherTongue;
-	private ContactInfo contactInfo;
 	private String profileFor;
-	private ReligionDetail religionDetails;
+
+	private ContactInfo contactInfo;
+	private MyInterestDetails myInterestDetails;
 	private PersonalDetails personalDetails;
 	private ProfessionDetails professionDetails;
-	private MyInterestDetails myInterestDetails;
+	private ReligionDetail religionDetails;
 
 	public String getFirstName() {
 		return firstName;
