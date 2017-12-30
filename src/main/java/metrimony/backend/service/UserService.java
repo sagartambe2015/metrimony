@@ -1,8 +1,5 @@
 package metrimony.backend.service;
 
-
-
-
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -29,78 +26,88 @@ import metrimony.enums.PlansEnum;
 @Transactional(readOnly = true)
 public class UserService {
 
-    @Autowired
-    private RoleRepository roleRepository;
+	@Autowired
+	private RoleRepository roleRepository;
 
-    @Autowired
-    private PlanRepository planRepository;
+	@Autowired
+	private PlanRepository planRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
-    @Autowired
-    private PasswordResetTokenRepository passwordResetTokenRepository;
-    
-    /** The application logger */
-    private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
+	@Autowired
+	private PasswordResetTokenRepository passwordResetTokenRepository;
 
-    @Transactional
-    public User createUser(User user, PlansEnum plansEnum, Set<UserRole> userRoles) {
+	/** The application logger */
+	private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
-        String encryptedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encryptedPassword);
+	@Transactional
+	public User createUser(User user, PlansEnum plansEnum, Set<UserRole> userRoles) {
 
-        Plan plan = new Plan(plansEnum);
-        // It makes sure the plans exist in the database
-        if (!planRepository.exists(plansEnum.getId())) {
-            plan = planRepository.save(plan);
-        }
+		String encryptedPassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(encryptedPassword);
 
-        user.setPlan(plan);
+		Plan plan = new Plan(plansEnum);
+		// It makes sure the plans exist in the database
+		if (!planRepository.exists(plansEnum.getId())) {
+			plan = planRepository.save(plan);
+		}
 
-        for (UserRole ur : userRoles) {
-            roleRepository.save(ur.getRole());
-        }
+		user.setPlan(plan);
 
-        user.getUserRoles().addAll(userRoles);
+		for (UserRole ur : userRoles) {
+			roleRepository.save(ur.getRole());
+		}
 
-        user = userRepository.save(user);
+		user.getUserRoles().addAll(userRoles);
 
-        return user;
+		user = userRepository.save(user);
 
-    }
+		return user;
 
-    /**
-     * Returns a user by username or null if a user could not be found.
-     * @param username The username to be found
-     * @return A user by username or null if a user could not be found.
-     */
-    public User findByUserName(String username) {
-        return userRepository.findByUsername(username);
-    }
+	}
 
-    /**
-     * Returns a user for the given email or null if a user could not be found.
-     * @param email The email associated to the user to find.
-     * @return a user for the given email or null if a user could not be found.
-     */
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
+	/**
+	 * Returns a user by username or null if a user could not be found.
+	 * 
+	 * @param username
+	 *            The username to be found
+	 * @return A user by username or null if a user could not be found.
+	 */
+	public User findByUserName(String username) {
+		return userRepository.findByUsername(username);
+	}
 
-    @Transactional
-    public void updateUserPassword(long userId, String password) {
-        password = passwordEncoder.encode(password);
-        userRepository.updateUserPassword(userId, password);
-        LOG.debug("Password updated successfully for user id {} ", userId);
+	/**
+	 * Returns a user for the given email or null if a user could not be found.
+	 * 
+	 * @param email
+	 *            The email associated to the user to find.
+	 * @return a user for the given email or null if a user could not be found.
+	 */
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
 
-        Set<PasswordResetToken> resetTokens = passwordResetTokenRepository.findAllByUserId(userId);
-        if (!resetTokens.isEmpty()) {
-            passwordResetTokenRepository.delete(resetTokens);
-        }
-    }
+	@Transactional
+	public void updateUserPassword(long userId, String password) {
+		password = passwordEncoder.encode(password);
+		userRepository.updateUserPassword(userId, password);
+		LOG.debug("Password updated successfully for user id {} ", userId);
+
+		Set<PasswordResetToken> resetTokens = passwordResetTokenRepository.findAllByUserId(userId);
+		if (!resetTokens.isEmpty()) {
+			passwordResetTokenRepository.delete(resetTokens);
+		}
+	}
+
+	public void cleanAllUsersAndRoles() {
+		userRepository.deleteAll();
+		roleRepository.deleteAll();
+
+	}
 
 }
