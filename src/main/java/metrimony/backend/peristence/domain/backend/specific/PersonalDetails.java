@@ -1,6 +1,13 @@
 package metrimony.backend.peristence.domain.backend.specific;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class PersonalDetails {
+
+	@Id
+	private int id;
 	private String lstMatitalStatus;// Never Married,Widowed,Divorced,Awaiting to Divorce
 	private String height;// Can be converted to inch to cm vice-verca in sub class
 	private String familyStatus;// Middle class, Upper middle class, Rich, Affluent

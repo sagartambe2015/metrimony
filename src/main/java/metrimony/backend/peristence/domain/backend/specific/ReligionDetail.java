@@ -1,7 +1,13 @@
 package metrimony.backend.peristence.domain.backend.specific;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ReligionDetail {
 
+	@Id
+	private int id;
 	private String cast;
 	private String subcast;
 	private String gohtra;

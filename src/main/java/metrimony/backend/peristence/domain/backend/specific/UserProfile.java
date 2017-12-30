@@ -2,7 +2,14 @@ package metrimony.backend.peristence.domain.backend.specific;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class UserProfile {
+
+	@Id
+	private int id;
 	private String firstName;
 	private String middleName;
 	private String surname;

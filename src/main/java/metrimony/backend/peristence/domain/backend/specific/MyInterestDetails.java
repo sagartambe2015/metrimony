@@ -1,5 +1,8 @@
 package metrimony.backend.peristence.domain.backend.specific;
 
+import javax.persistence.Entity;
+
+@Entity
 public class MyInterestDetails {
 	private String userId;
 	private String id;

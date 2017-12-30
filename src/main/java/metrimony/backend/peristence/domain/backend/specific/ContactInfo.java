@@ -1,6 +1,13 @@
 package metrimony.backend.peristence.domain.backend.specific;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ContactInfo {
+
+	@Id
+	private int id;
 	private String emailId;
 	private String Address;
 	private String primaryMobileNo;

@@ -1,7 +1,13 @@
 package metrimony.backend.peristence.domain.backend.specific;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ProfessionDetails {
 
+	@Id
+	private int id;
 	private String highestEducation;
 	private String employedIn;// Government, Private ,Business, Defence ,Self, Employed ,Not working
 	private String occupation;
